@@ -9,15 +9,9 @@ const _ = require('lodash'),
 const HealthMonitor = require('./health-monitor.js'),
 	  wrap = require('./function-wrapper.js');
 
-/**
- * formatOutput formats the response based on verbosity and health of the services
- * @param verbose | boolean
- * @param monitor | HealthMonitor
- * @returns object
-*/
+
 function formatOutput(verbose, monitor) {
 	if(!verbose) {
-		// Return only the status
 		if(monitor.healthy()) {
 			return { status: HttpStatus.NO_CONTENT };
 		}
@@ -61,7 +55,7 @@ module.exports = async function(config) {
 		throw new Error(`Port ${config.port} is taken.`);
 	}
 
-	// Create a new http server with one route for metrics
+	// Create a new http server with one route for health check
 	let app = new koa();
 	let server = app.listen(config.port);
 	let r = new router();
