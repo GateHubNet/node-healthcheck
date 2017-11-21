@@ -18,6 +18,7 @@ module.exports = class MysqlProbe extends PingProbe {
 		wrap.after(target, 'createConnection', data, (target, methodName, args, probeData, ret) => {
 			// Properly change self.healthy property
 			this.client = ret;
+			return ret;
 		});
 
 		return target;
