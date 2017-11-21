@@ -1,0 +1,22 @@
+{
+  "name": "@gatehub/healthcheck",
+  "version": "0.0.144",
+  "description": "GateHub auto healthcheck library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gatehub",
+    "healthcheck"
+  ],
+  "author": "Uroš Hercog",
+  "license": "ISC",
+  "dependencies": {
+    "get-port": "^3.2.0",
+    "http-status-codes": "^1.3.0",
+    "koa": "^2.4.1",
+    "koa-router": "^7.3.0",
+    "lodash": "^4.17.4"
+  }
+}
