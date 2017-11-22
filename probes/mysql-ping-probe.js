@@ -29,7 +29,4 @@ module.exports = class MysqlProbe extends PingProbe {
 			if(!this.client) return rej();
 			this.client.ping({ timeout }, (err) => err && res() || rej());
 		});
-	}
-
-	healthy() { return false; }
 }
