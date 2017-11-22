@@ -16,7 +16,6 @@ module.exports = class MysqlProbe extends PingProbe {
 
 		let data = {};
 		wrap.after(target, 'createConnection', data, (target, methodName, args, probeData, ret) => {
-			// Properly change self.healthy property
 			this.client = ret;
 			return ret;
 		});
@@ -29,4 +28,5 @@ module.exports = class MysqlProbe extends PingProbe {
 			if(!this.client) return rej();
 			this.client.ping({ timeout }, (err) => err && res() || rej());
 		});
+	}
 }

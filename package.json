@@ -1,6 +1,6 @@
 {
   "name": "@gatehub/healthcheck",
-  "version": "0.0.144",
+  "version": "0.1.0",
   "description": "GateHub auto healthcheck library",
   "main": "index.js",
   "scripts": {

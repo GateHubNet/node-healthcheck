@@ -28,6 +28,7 @@ module.exports = class HealthMonitor {
 			const s = require(`./probes/${service}-probe.js`);
 			this._probes.push(new s());
 		} catch(e) {
+			console.log(e);
 			console.error(`Probe ${service} does not exist, skipping`);
 		}
 	}
