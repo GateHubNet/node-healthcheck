@@ -1,28 +1,28 @@
 const BaseProbe = require('./base-probe.js'),
-	  wrap = require('../function-wrapper.js');
+    wrap = require('../function-wrapper.js');
 
 module.exports = class RedisProbe extends BaseProbe {
-	constructor() {
-		super('redis');
+    constructor() {
+        super('redis');
 
-		this.attached = false;
-	}
+        this.attached = false;
+    }
 
-	attach(target) {
-		if(!target || target.__healthProbeAttached__) return target;
-		target.__healthProbeAttached__ = this.attached = true;
+    attach(target) {
+        if(!target || target.__healthProbeAttached__) return target;
+        target.__healthProbeAttached__ = this.attached = true;
 
-		let data = {};
-		wrap.after(target, 'createClient', data, (target, methodName, args, probeData, ret) => {
-			this.client = ret;
-			return ret;
-		});
+        let data = {};
+        wrap.after(target, 'createClient', data, (target, methodName, args, probeData, ret) => {
+            this.client = ret;
+            return ret;
+        });
 
-		return target;
-	}
+        return target;
+    }
 
-	start() {}
-	stop() {}
+    start() {}
+    stop() {}
 
-	healthy() { return this.client && this.client.connected; }
-}	  
+    healthy() { return this.client && this.client.connected; }
+};
